@@ -146,11 +146,11 @@
 #pragma mark -
 #pragma mark UIPickerViewDataSource
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+- (NSInteger)numberOfComponentsInPickerView:(__unused UIPickerView *)pickerView {
     return self.bigUnitDigits + self.smallUnitDigits + 2;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+- (NSInteger)pickerView:(__unused UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
 
     //for labels
     if (component == self.bigUnitDigits || component == self.bigUnitDigits + self.smallUnitDigits + 1)

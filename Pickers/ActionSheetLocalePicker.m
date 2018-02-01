@@ -122,7 +122,7 @@
 
     _continents= [[NSMutableArray alloc] init];
 
-    [timeZones enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+    [timeZones enumerateObjectsUsingBlock:^(id obj, NSUInteger idx __unused, BOOL *stop __unused)
     {
         if ( [obj isKindOfClass:[NSString class]] )
         {
@@ -253,12 +253,12 @@
 #pragma mark - UIPickerViewDataSource Implementation
 /////////////////////////////////////////////////////////////////////////
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+- (NSInteger)numberOfComponentsInPickerView:(__unused UIPickerView *)pickerView
 {
     return 2;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+- (NSInteger)pickerView:(__unused UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     // Returns
     switch (component) {
@@ -274,7 +274,7 @@
 /////////////////////////////////////////////////////////////////////////
 
 // returns width of column and height of row for each component. 
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
+- (CGFloat)pickerView:(__unused UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
 
     switch (component) {
@@ -287,7 +287,7 @@
     return 0;
 }
 
-- (UIView *)pickerView:(UIPickerView *)pickerView
+- (UIView *)pickerView:(__unused UIPickerView *)pickerView
             viewForRow:(NSInteger)row
           forComponent:(NSInteger)component
            reusingView:(UIView *)view {
@@ -374,7 +374,7 @@
 - (void)customButtonPressed:(id)sender {
     UIBarButtonItem *button = (UIBarButtonItem*)sender;
     NSInteger index = button.tag;
-    NSAssert((index >= 0 && index < self.customButtons.count), @"Bad custom button tag: %ld, custom button count: %lu", (long)index, (unsigned long)self.customButtons.count);
+    NSAssert((index >= 0 && index < (long)self.customButtons.count), @"Bad custom button tag: %ld, custom button count: %lu", (long)index, (unsigned long)self.customButtons.count);
     
     NSDictionary *buttonDetails = (self.customButtons)[(NSUInteger) index];
     NSAssert(buttonDetails != NULL, @"Custom button dictionary is invalid");
@@ -406,3 +406,4 @@
 
 
 @end
+

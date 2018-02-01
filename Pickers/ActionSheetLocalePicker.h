@@ -61,3 +61,4 @@ static const float secondColumnWidth = 160.0f;
 @property (nonatomic, copy) ActionLocaleCancelBlock onActionSheetCancel;
 
 @end
+

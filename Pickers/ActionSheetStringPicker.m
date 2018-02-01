@@ -119,19 +119,19 @@
 
 #pragma mark - UIPickerViewDelegate / DataSource
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+- (void)pickerView:(__unused UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(__unused NSInteger)component {
     self.selectedIndex = row;
 }
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+- (NSInteger)numberOfComponentsInPickerView:(__unused UIPickerView *)pickerView {
     return 1;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+- (NSInteger)pickerView:(__unused UIPickerView *)pickerView numberOfRowsInComponent:(__unused NSInteger)component {
     return self.data.count;
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (NSString *)pickerView:(__unused UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(__unused NSInteger)component {
     id obj = (self.data)[(NSUInteger) row];
 
     // return the object if it is already a NSString,
@@ -147,7 +147,7 @@
     return nil;
 }
 
-- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (NSAttributedString *)pickerView:(__unused UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(__unused NSInteger)component {
     id obj = (self.data)[(NSUInteger) row];
     
     // return the object if it is already a NSString,
@@ -163,7 +163,7 @@
     return nil;
 }
 
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+- (UIView *)pickerView:(__unused UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(__unused NSInteger)component reusingView:(UIView *)view {
     UILabel *pickerLabel = (UILabel *)view;
     if (pickerLabel == nil) {
         pickerLabel = [[UILabel alloc] init];
@@ -188,7 +188,7 @@
     return pickerLabel;
 }
 
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(__unused NSInteger)component {
     return pickerView.frame.size.width - 30;
 }
 

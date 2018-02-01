@@ -39,7 +39,7 @@ static const enum UIViewAnimationOptions options = UIViewAnimationOptionCurveEas
     UIView *_bgView;
 }
 
-- (void)dismissWithClickedButtonIndex:(int)i animated:(BOOL)animated
+- (void)dismissWithClickedButtonIndex:(__unused int)i animated:(BOOL)animated
 {
     CGPoint fadeOutToPoint = CGPointMake(view.center.x,
             self.center.y + CGRectGetHeight(view.frame));
@@ -50,7 +50,7 @@ static const enum UIViewAnimationOptions options = UIViewAnimationOptionCurveEas
         self.center = fadeOutToPoint;
         self.backgroundColor = [UIColor colorWithWhite:0.f alpha:0.0f];
     };
-    void (^completion)(BOOL) = ^(BOOL finished) {
+    void (^completion)(BOOL) = ^(BOOL finished __unused) {
     //    if (![appWindow isKeyWindow])
     //        [appWindow makeKeyAndVisible];
         [self destroyWindow];
@@ -126,7 +126,7 @@ static const enum UIViewAnimationOptions options = UIViewAnimationOptionCurveEas
     _bgView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
-- (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated
+- (void)showFromBarButtonItem:(__unused UIBarButtonItem *)item animated:(__unused BOOL)animated
 {
     [self showInContainerView];
 }
@@ -208,7 +208,7 @@ static const enum UIViewAnimationOptions options = UIViewAnimationOptionCurveEas
 	return [UIApplication sharedApplication].statusBarHidden;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)shouldAutorotateToInterfaceOrientation:(__unused UIInterfaceOrientation)interfaceOrientation
 {
     return NO;
 }

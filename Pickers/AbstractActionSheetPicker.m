@@ -66,7 +66,7 @@ CG_INLINE BOOL isIPhone4() {
     return NO;
 }
 
-- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller traitCollection:(UITraitCollection *)traitCollection {
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(__unused UIPresentationController *)controller traitCollection:(__unused UITraitCollection *)traitCollection {
     return UIModalPresentationNone;
 }
 @end
@@ -137,8 +137,8 @@ CG_INLINE BOOL isIPhone4() {
         self.popoverBackgroundViewClass = nil;
         self.popoverDisabled = NO;
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
+//#pragma clang diagnostic push
+//#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
         if ([UIApplication instancesRespondToSelector:@selector(supportedInterfaceOrientationsForWindow:)])
             self.supportedInterfaceOrientations = (UIInterfaceOrientationMask) [[UIApplication sharedApplication]
                     supportedInterfaceOrientationsForWindow:
@@ -148,7 +148,7 @@ CG_INLINE BOOL isIPhone4() {
             if (IS_IPAD)
                 self.supportedInterfaceOrientations |= (1 << UIInterfaceOrientationPortraitUpsideDown);
         }
-#pragma clang diagnostic pop
+//#pragma clang diagnostic pop
 
         UIBarButtonItem *sysDoneButton = [self createButtonWithType:UIBarButtonSystemItemDone target:self
                                                              action:@selector(actionPickerDone:)];
@@ -221,7 +221,7 @@ CG_INLINE BOOL isIPhone4() {
     return nil;
 }
 
-- (void)notifyTarget:(id)target didSucceedWithAction:(SEL)successAction origin:(id)origin {
+- (void)notifyTarget:(__unused id)target didSucceedWithAction:(__unused SEL)successAction origin:(__unused id)origin {
     NSAssert(NO, @"This is an abstract class, you must use a subclass of AbstractActionSheetPicker (like ActionSheetStringPicker)");
 }
 
@@ -252,10 +252,10 @@ CG_INLINE BOOL isIPhone4() {
         UIToolbar *leftEdge = [[UIToolbar alloc] initWithFrame:rect];
         rect.origin.x = masterView.frame.size.width - _borderWidth;
         UIToolbar *rightEdge = [[UIToolbar alloc] initWithFrame:rect];
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
+//#pragma clang diagnostic push
+//#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
         leftEdge.barTintColor = rightEdge.barTintColor = self.toolbar.barTintColor;
-#pragma clang diagnostic pop
+//#pragma clang diagnostic pop
         [masterView insertSubview:leftEdge atIndex:0];
         [masterView insertSubview:rightEdge atIndex:0];
     }
@@ -276,8 +276,8 @@ CG_INLINE BOOL isIPhone4() {
         [self presentPickerForView:masterView];
     }
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
+//#pragma clang diagnostic push
+//#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
     {
         switch (self.tapDismissAction) {
             case TapActionNone:
@@ -300,16 +300,16 @@ CG_INLINE BOOL isIPhone4() {
             }
         };
     }
-#pragma clang diagnostic pop
+//#pragma clang diagnostic pop
 
 }
 
-- (IBAction)actionPickerDone:(id)sender {
+- (IBAction)actionPickerDone:(__unused id)sender {
     [self notifyTarget:self.target didSucceedWithAction:self.successAction origin:[self storedOrigin]];
     [self dismissPicker];
 }
 
-- (IBAction)actionPickerCancel:(id)sender {
+- (IBAction)actionPickerCancel:(__unused id)sender {
     [self notifyTarget:self.target didCancelWithAction:self.cancelAction origin:[self storedOrigin]];
     [self dismissPicker];
 }
@@ -382,7 +382,7 @@ CG_INLINE BOOL isIPhone4() {
 - (IBAction)customButtonPressed:(id)sender {
     UIBarButtonItem *button = (UIBarButtonItem *) sender;
     NSInteger index = button.tag;
-    NSAssert((index >= 0 && index < self.customButtons.count), @"Bad custom button tag: %ld, custom button count: %lu", (long) index, (unsigned long) self.customButtons.count);
+    NSAssert((index >= 0 && index < (long)self.customButtons.count), @"Bad custom button tag: %ld, custom button count: %lu", (long) index, (unsigned long) self.customButtons.count);
 
     NSDictionary *buttonDetails = (self.customButtons)[(NSUInteger) index];
     NSAssert(buttonDetails != NULL, @"Custom button dictionary is invalid");
@@ -545,10 +545,10 @@ CG_INLINE BOOL isIPhone4() {
         toolBarItemLabel.text = aTitle;
 
         if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
+//#pragma clang diagnostic push
+//#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
             textSize = [[toolBarItemLabel text] sizeWithAttributes:@{NSFontAttributeName : [toolBarItemLabel font]}];
-#pragma clang diagnostic pop
+//#pragma clang diagnostic pop
         } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -693,7 +693,7 @@ CG_INLINE BOOL isIPhone4() {
     [UIView commitAnimations];
 }
 
-- (void)didRotate:(NSNotification *)notification {
+- (void)didRotate:(__unused NSNotification *)notification {
     if (OrientationMaskSupportsOrientation(self.supportedInterfaceOrientations, DEVICE_ORIENTATION))
         [self dismissPicker];
 }
@@ -711,10 +711,10 @@ CG_INLINE BOOL isIPhone4() {
     viewController.view = aView;
 
     if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
+//#pragma clang diagnostic push
+//#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
         viewController.preferredContentSize = aView.frame.size;
-#pragma clang diagnostic pop
+//#pragma clang diagnostic pop
     }
     else {
 #pragma clang diagnostic push
@@ -779,7 +779,7 @@ CG_INLINE BOOL isIPhone4() {
 
 #pragma mark - Popoverdelegate
 
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+- (void)popoverControllerDidDismissPopover:(__unused UIPopoverController *)popoverController {
     switch (self.tapDismissAction) {
         case TapActionSuccess: {
             [self notifyTarget:self.target didSucceedWithAction:self.successAction origin:self.storedOrigin];

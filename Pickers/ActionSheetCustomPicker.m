@@ -74,7 +74,7 @@
 
     if ( self.initialSelections )
     {
-        NSAssert(pv.numberOfComponents == self.initialSelections.count, @"Number of sections not match");
+        NSAssert(pv.numberOfComponents == (long)self.initialSelections.count, @"Number of sections not match");
         for (NSUInteger i = 0; i < [self.initialSelections count]; i++)
         {
 
@@ -101,7 +101,7 @@
 
 /////////////////////////////////////////////////////////////////////////
 
-- (void)notifyTarget:(id)target didSucceedWithAction:(SEL)successAction origin:(id)origin
+- (void)notifyTarget:(__unused id)target didSucceedWithAction:(__unused SEL)successAction origin:(id)origin
 {
     // Ignore parent args and just notify the delegate
     if ( [_delegate respondsToSelector:@selector(actionSheetPickerDidSucceed:origin:)] )
@@ -112,7 +112,7 @@
 
 /////////////////////////////////////////////////////////////////////////
 
-- (void)notifyTarget:(id)target didCancelWithAction:(SEL)cancelAction origin:(id)origin
+- (void)notifyTarget:(__unused id)target didCancelWithAction:(__unused SEL)cancelAction origin:(id)origin
 {
     // Ignore parent args and just notify the delegate
     if ( [_delegate respondsToSelector:@selector(actionSheetPickerDidCancel:origin:)] )

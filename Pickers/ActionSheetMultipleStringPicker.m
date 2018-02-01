@@ -123,19 +123,19 @@
 
 #pragma mark - UIPickerViewDelegate / DataSource
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+- (void)pickerView:(__unused UIPickerView *)pickerView didSelectRow:(__unused NSInteger)row inComponent:(__unused NSInteger)component {
 
 }
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+- (NSInteger)numberOfComponentsInPickerView:(__unused UIPickerView *)pickerView {
     return [self.data count];
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+- (NSInteger)pickerView:(__unused UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return ((NSArray *)self.data[component]).count;
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (NSString *)pickerView:(__unused UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(__unused NSInteger)component {
     id obj = (self.data)[(NSUInteger) row];
 
     // return the object if it is already a NSString,
@@ -151,7 +151,7 @@
     return nil;
 }
 
-- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (NSAttributedString *)pickerView:(__unused UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
     id obj = (self.data)[component][(NSUInteger) row];
 
     // return the object if it is already a NSString,
@@ -167,7 +167,7 @@
     return nil;
 }
 
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+- (UIView *)pickerView:(__unused UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     UILabel *pickerLabel = (UILabel *)view;
     if (pickerLabel == nil) {
         pickerLabel = [[UILabel alloc] init];
@@ -194,7 +194,7 @@
 
 
 - (void)performInitialSelectionInPickerView:(UIPickerView *)pickerView {
-    for (int i = 0; i < self.selectedIndexes.count; i++) {
+    for (int i = 0; i < (long)self.selectedIndexes.count; i++) {
         NSInteger row = [(NSNumber *)self.initialSelection[i] integerValue];
         [pickerView selectRow:row inComponent:i animated:NO];
     }
@@ -202,7 +202,7 @@
 
 - (NSArray *)selection {
     NSMutableArray * array = [NSMutableArray array];
-    for (int i = 0; i < self.data.count; i++) {
+    for (int i = 0; i < (long)self.data.count; i++) {
         id object = self.data[i][[(UIPickerView *)self.pickerView selectedRowInComponent:(NSInteger)i]];
         [array addObject: object];
     }
@@ -211,7 +211,7 @@
 
 - (NSArray *)selectedIndexes {
     NSMutableArray * indexes = [NSMutableArray array];
-    for (int i = 0; i < self.data.count; i++) {
+    for (int i = 0; i < (long)self.data.count; i++) {
         NSNumber *index = [NSNumber numberWithInteger:[(UIPickerView *)self.pickerView selectedRowInComponent:(NSInteger)i]];
         [indexes addObject: index];
     }
