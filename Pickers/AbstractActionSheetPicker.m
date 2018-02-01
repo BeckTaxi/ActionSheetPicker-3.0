@@ -50,8 +50,13 @@ CG_INLINE BOOL isIPhone4() {
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 @interface MyPopoverController : UIPopoverController <UIAdaptivePresentationControllerDelegate>
 @end
+
+#pragma clang diagnostic pop
 
 @implementation MyPopoverController
 + (BOOL)canShowPopover {
@@ -93,7 +98,12 @@ CG_INLINE BOOL isIPhone4() {
 @property(nonatomic, unsafe_unretained) id target;
 @property(nonatomic, assign) SEL successAction;
 @property(nonatomic, assign) SEL cancelAction;
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @property(nonatomic, strong) UIPopoverController *popOverController;
+#pragma clang diagnostic pop
+
 @property(nonatomic, strong) CIFilter *filter;
 @property(nonatomic, strong) CIContext *context;
 @property(nonatomic, strong) NSObject *selfReference;
@@ -106,7 +116,10 @@ CG_INLINE BOOL isIPhone4() {
 
 - (void)presentActionSheet:(SWActionSheet *)actionSheet;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)presentPopover:(UIPopoverController *)popover;
+#pragma clang diagnostic pop
 
 - (void)dismissPicker;
 
@@ -735,7 +748,11 @@ CG_INLINE BOOL isIPhone4() {
     [self presentPopover:_popOverController];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)presentPopover:(UIPopoverController *)popover {
+#pragma clang diagnostic pop
+
     NSParameterAssert(popover != NULL);
     if (self.barButtonItem) {
         if (_containerView != nil) {
@@ -779,7 +796,11 @@ CG_INLINE BOOL isIPhone4() {
 
 #pragma mark - Popoverdelegate
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)popoverControllerDidDismissPopover:(__unused UIPopoverController *)popoverController {
+#pragma clang diagnostic pop
+    
     switch (self.tapDismissAction) {
         case TapActionSuccess: {
             [self notifyTarget:self.target didSucceedWithAction:self.successAction origin:self.storedOrigin];

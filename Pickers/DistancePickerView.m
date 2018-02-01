@@ -111,12 +111,12 @@
 
             if ( NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1)
             {
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
+//#pragma clang diagnostic push
+//#pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
                 frame.size = [longestString sizeWithAttributes:
                                                     @{NSFontAttributeName :
                                                             labelfont}];
-#pragma clang diagnostic pop
+//#pragma clang diagnostic pop
             }
             else
             {

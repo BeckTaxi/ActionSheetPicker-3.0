@@ -166,7 +166,7 @@
     return 10;
 }
 
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+- (UIView *)pickerView:(__unused UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(__unused UIView *)view{
 
     CGFloat totalWidth = pickerView.frame.size.width - 30;
     CGFloat otherSize = (totalWidth )/(self.bigUnitDigits + self.smallUnitDigits + 2);
@@ -193,14 +193,14 @@
     return label;
 }
 
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(__unused NSInteger)component {
     CGFloat totalWidth = pickerView.frame.size.width - 30;
     CGFloat otherSize = (totalWidth )/(self.bigUnitDigits + self.smallUnitDigits + 2);
     return otherSize;
 }
 
 
-- (void)customButtonPressed:(id)sender {
+- (void)customButtonPressed:(__unused id)sender {
     NSLog(@"Not implemented. If you get around to it, please contribute back to the project :)");
 }
 
